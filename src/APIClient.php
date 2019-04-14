@@ -91,12 +91,14 @@ class APIClient {
     curl_setopt($ch, CURLOPT_TIMEOUT_MS, $timeoutMs);
 
     $result = curl_exec($ch);
-    curl_close($ch);
 
     if (!$result) {
       $err = curl_error($ch);
+      curl_close($ch);
       throw new \Exception($err);
     }
+
+    curl_close($ch);
 
     $resultDecoded = json_decode($result);
     if (!$resultDecoded) {
