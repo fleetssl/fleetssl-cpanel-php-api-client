@@ -15,7 +15,7 @@ class APIClient {
   }
 
   public function listCertificates() {
-    return $this->makeRequest("POST", "list-certificates", 1, null);
+    return $this->makeRequest("GET", "list-certificates", 1, null);
   }
 
   public function issueCertificate($virtualHost, $dnsIdentifiers, $challengeMethod = "http-01", $dryRun = false) {
@@ -79,11 +79,11 @@ class APIClient {
     ];
 
     if ($body) {
-      curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $httpMethod);
       curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($body));
       array_push($headers, "Content-Type: application/json");
     }
 
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $httpMethod);
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_USERNAME, $this->username);
