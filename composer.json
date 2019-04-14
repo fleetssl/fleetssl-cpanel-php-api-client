@@ -1,0 +1,19 @@
+{
+    "name": "fleetssl/fleetssl-cpanel-api-client",
+    "description": "A PHP client for the FleetSSL cPanel plugin API",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "FleetSSL",
+            "email": "support@fleetssl.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {"FleetSSL\\Cpanel\\": "src/"}
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.1"
+    }
+}
